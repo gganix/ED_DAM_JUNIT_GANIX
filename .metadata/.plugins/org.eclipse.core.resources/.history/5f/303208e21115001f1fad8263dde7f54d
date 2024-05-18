@@ -1,0 +1,79 @@
+/**
+ * 
+ */
+package org.cuatrovientos.dam.ed.DAM_ED_EntregaJUnit22;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+/**
+ * 
+ */
+class TransporteTest {
+
+	private Camioneta camioneta;
+    private Paquete paquete;
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@BeforeEach
+	void setUp() throws Exception {
+		camioneta = new Camioneta();
+		paquete = new Paquete("Madrid", 10.5f);
+	}
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@AfterEach
+	void tearDown() throws Exception {
+		camioneta = null;
+		paquete = null;
+	}
+
+	/**
+	 * Test method for
+	 * {@link org.cuatrovientos.dam.ed.DAM_ED_EntregaJUnit22.Transporte#incluirPaquete(org.cuatrovientos.dam.ed.DAM_ED_EntregaJUnit22.Paquete)}.
+	 */
+	@Test
+	void testIncluirPaquete() {
+		camioneta.incluirPaquete(paquete);
+        float expectedPeso = paquete.getPeso();
+        float actualPeso = camioneta.pesoTotal();
+        assertEquals(expectedPeso, actualPeso, 0.001, "El peso total no coincide con el peso del paquete añadido");
+	}
+
+	/**
+	 * Test method for
+	 * {@link org.cuatrovientos.dam.ed.DAM_ED_EntregaJUnit22.Transporte#pesoTotal()}.
+	 */
+	@Test
+	void testPesoTotal() {
+		camioneta.incluirPaquete(paquete);
+        float expectedPeso = 10.5f;
+        float actualPeso = camioneta.pesoTotal();
+        assertEquals(expectedPeso, actualPeso, 0.001, "El peso total no coincide con el peso esperado");
+        
+        Paquete otroPaquete = new Paquete("Barcelona", 5.0f);
+        camioneta.incluirPaquete(otroPaquete);
+        expectedPeso = 15.5f;
+        actualPeso = camioneta.pesoTotal();
+        assertEquals(expectedPeso, actualPeso, 0.001, "El peso total no coincide con la suma de los pesos de los paquetes");
+	}
+
+	/**
+	 * Test method for
+	 * {@link org.cuatrovientos.dam.ed.DAM_ED_EntregaJUnit22.Transporte#recorrerDistancia()}.
+	 */
+	@Test
+	void testRecorrerDistancia() {
+		int actualDistancia = camioneta.recorrerDistancia();
+        assertTrue(actualDistancia >= 70 && actualDistancia <= 100, 
+                "La distancia recorrida está fuera del rango esperado: " + actualDistancia);
+	}
+
+}

@@ -1,0 +1,13 @@
+package org.cuatrovientos.dam.ed.DAM_ED_EntregaJUnit;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+
+public class aa {
+
+    @Test
+    public void shouldAnswerWithTrue() {
+        assertTrue(true);
+    }
+
+}

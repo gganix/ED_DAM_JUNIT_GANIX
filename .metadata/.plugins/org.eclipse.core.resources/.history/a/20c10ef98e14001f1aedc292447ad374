@@ -1,0 +1,42 @@
+package org.cuatrovientos.dam.ed.DAM_ED_EntregaJUnit12;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+public class GeneradorIpTest {
+
+    private GeneradorIp generadorIp;
+
+    @BeforeEach
+    public void setUp() {
+        generadorIp = new GeneradorIp();
+    }
+
+    @AfterEach
+    public void tearDown() {
+        generadorIp = null;
+    }
+
+    @Test
+    public void testGenerarNumero() {
+        int min = 0;
+        int max = 254;
+        int numero = generadorIp.generarNumero(min, max);
+        assertTrue(numero >= min && numero <= max, "El número generado está fuera del rango esperado [" + min + ", " + max + "]: " + numero);
+    }
+
+    @Test
+    public void testGeneraIp() {
+        String ip = generadorIp.generarIp();
+        String[] octetos = ip.split("\\.");
+
+        // Verificar que todos los octetos son diferentes de 0
+        for (String octeto : octetos) {
+            int valor = Integer.parseInt(octeto);
+            assertTrue(valor != 0, "Al menos uno de los octetos es 0: " + ip);
+        }
+    }
+}

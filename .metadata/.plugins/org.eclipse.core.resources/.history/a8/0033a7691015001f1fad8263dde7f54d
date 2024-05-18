@@ -1,0 +1,31 @@
+package org.cuatrovientos.dam.ed.DAM_ED_EntregaJUnit22;
+import java.util.Vector;
+import java.util.Random;
+
+public class Trailer implements Transporte {
+    private Vector<Paquete> paquetes;
+
+    public Trailer() {
+        this.paquetes = new Vector<>();
+    }
+
+    @Override
+    public void incluirPaquete(Paquete paquete) {
+        paquetes.add(paquete);
+    }
+
+    @Override
+    public float pesoTotal() {
+        float total = 0;
+        for (Paquete p : paquetes) {
+            total += p.getPeso();
+        }
+        return total;
+    }
+
+    @Override
+    public int recorrerDistancia() {
+        Random rand = new Random();
+        return 270 + rand.nextInt(31); // Generates a random number between 270 and 300
+    }
+}

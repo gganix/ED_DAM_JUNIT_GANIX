@@ -1,0 +1,8 @@
+package org.cuatrovientos.dam.ed.DAM_ED_EntregaJUnit13;
+
+import java.util.Vector;
+
+public class Factura extends Producto {
+
+	private Vector<Productos> productos;
+}

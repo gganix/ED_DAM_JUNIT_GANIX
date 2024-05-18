@@ -1,0 +1,2 @@
+actualPeso = camioneta.pesoTotal();
+        assertEquals(expectedPeso, actualPeso, 0.001);

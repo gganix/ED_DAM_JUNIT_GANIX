@@ -1,0 +1,63 @@
+/**
+ * 
+ */
+package org.cuatrovientos.dam.ed.DAM_ED_EntregaJUnit12;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+/**
+ * 
+ */
+class GeneradorIpTest {
+
+	private GeneradorIp generadorIp;
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@BeforeEach
+	void setUp() throws Exception {
+		generadorIp = new GeneradorIp();
+	}
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@AfterEach
+	void tearDown() throws Exception {
+		generadorIp = null;
+	}
+
+	/**
+	 * Test method for
+	 * {@link org.cuatrovientos.dam.ed.DAM_ED_EntregaJUnit12.GeneradorIp#generarNumero(int, int)}.
+	 */
+	@Test
+	void testGenerarNumero() {
+	    int min = 0;
+	    int max = 254;
+
+	    assertTrue(min <= max, "El valor mínimo debe ser menor o igual que el valor máximo");
+
+	    int numero = generadorIp.generarNumero(min, max);
+	    assertTrue(numero >= min && numero <= max, "El número generado (" + numero + ") no está dentro del rango esperado [" + min + ", " + max + "]");
+	}
+
+	/**
+	 * Test method for
+	 * {@link org.cuatrovientos.dam.ed.DAM_ED_EntregaJUnit12.GeneradorIp#generarIp()}.
+	 */
+	@Test
+	void testGenerarIp() {
+		String ip = generadorIp.generarIp();
+		String[] partes = ip.split("\\.");
+		int primero = Integer.parseInt(partes[0]);
+		int ultimo = Integer.parseInt(partes[3]);
+		assertNotEquals(0, primero, "La IP no puede empezar con 0");
+		assertNotEquals(0, ultimo, "La IP no puede terminar con 0");
+	}
+}

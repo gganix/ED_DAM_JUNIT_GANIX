@@ -1,0 +1,19 @@
+package org.cuatrovientos.dam.ed.DAM_ED_EntregaJUnit13;
+
+import java.util.Vector;
+
+public class Factura extends Producto {
+
+	private Vector<Producto> productos;
+	
+	public void meterProducto(Producto p) {
+	}
+	
+	public float totalFactura() {
+		
+	}
+	
+	public float aplicarIva(float iva) {
+		
+	}
+}

@@ -1,0 +1,35 @@
+package org.cuatrovientos.dam.ed.DAM_ED_EntregaJUnit12;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class GeneradorIpTest {
+
+	private GeneradorIp generadorIp;
+
+	@BeforeEach
+	void setUp() throws Exception {
+		generadorIp = new GeneradorIp();
+	}
+
+	@AfterEach
+	void tearDown() throws Exception {
+		generadorIp = null;
+	}
+
+	@Test
+	void testGenerarNumero() {
+		int numero = generadorIp.generarNumero(1, 254);
+		assertTrue(numero >= 1 && numero <= 254);
+	}
+
+	@Test
+	void testGenerarIp() {
+		String ip = generadorIp.generarIp();
+		assertNotNull(ip);
+		assertTrue(ip.matches("^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])$"));
+	}
+}
